@@ -9,7 +9,7 @@ def convert_decimal_separator(df):
     else:
         return df
 
-def render_table(data, col_width=5.0, row_height=0.625, font_size=14,
+def render_table(data, title='', col_width=5.0, row_height=0.625, font_size=14,
                      header_color='#40466e', row_colors=['#f1f1f2', 'w'], edge_color='w',
                      bbox=[0, 0, 1, 1], header_columns=0,
                      ax=None, **kwargs):
@@ -17,6 +17,7 @@ def render_table(data, col_width=5.0, row_height=0.625, font_size=14,
         size = (np.array(data.shape[::-1]) + np.array([0, 1])) * np.array([col_width, row_height])
         fig, ax = plt.subplots(figsize=size)
         ax.axis('off')
+        ax.set_title(title, fontsize='20')
 
     mpl_table = ax.table(cellText=data.values, bbox=bbox, colLabels=data.columns, **kwargs)
 
